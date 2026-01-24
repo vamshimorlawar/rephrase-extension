@@ -1,0 +1,260 @@
+/* Rephrase It - Content Script Styles */
+/* Minimal Black & White Theme */
+
+#rephrase-it-popup {
+  position: absolute;
+  z-index: 2147483647;
+  width: 440px;
+  max-width: calc(100vw - 40px);
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  overflow: hidden;
+}
+
+#rephrase-it-popup.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#rephrase-it-popup * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+.rephrase-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  border-bottom: 1px solid #eee;
+  background: #fafafa;
+}
+
+.rephrase-header.error {
+  background: #fef2f2;
+  border-bottom-color: #fecaca;
+}
+
+.rephrase-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  flex-grow: 1;
+  letter-spacing: -0.01em;
+  margin: 10px;
+}
+
+.rephrase-style-badge {
+  font-size: 12px;
+  padding: 6px 12px;
+  background: #f0f0f0;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  color: #555;
+  font-weight: 500;
+}
+
+.rephrase-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: #999;
+  font-size: 22px;
+  line-height: 1;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rephrase-close:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* Body */
+.rephrase-body {
+  padding: 24px;
+}
+
+/* Loading State */
+.rephrase-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 0;
+}
+
+.rephrase-loading p {
+  color: #666;
+  font-size: 14px;
+}
+
+.rephrase-spinner {
+  width: 36px;
+  height: 36px;
+  border: 2px solid #e0e0e0;
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: rephrase-spin 0.7s linear infinite;
+}
+
+@keyframes rephrase-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Sections */
+.rephrase-section {
+  margin-bottom: 24px;
+}
+
+.rephrase-section:last-of-type {
+  margin-bottom: 28px;
+}
+
+.rephrase-section label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.rephrase-text {
+  padding: 16px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.7;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.rephrase-text.original {
+  background: #f8f8f8;
+  color: #666;
+  border: 1px solid #eee;
+}
+
+.rephrase-text.rephrased {
+  background: #fff;
+  color: #1a1a1a;
+  border: 1px solid #ddd;
+}
+
+.rephrase-text::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rephrase-text::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rephrase-text::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+
+/* Actions */
+.rephrase-actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.rephrase-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  background: #fff;
+  color: #333;
+}
+
+.rephrase-btn:hover {
+  background: #f5f5f5;
+  border-color: #ccc;
+}
+
+.rephrase-btn:active {
+  background: #eee;
+}
+
+.rephrase-btn.primary {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+  color: #fff;
+}
+
+.rephrase-btn.primary:hover {
+  background: #333;
+  border-color: #333;
+}
+
+.rephrase-btn.primary:active {
+  background: #000;
+}
+
+/* Error State */
+.rephrase-error {
+  background: #fff;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.rephrase-error p {
+  color: #b91c1c;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.rephrase-error .error-hint {
+  color: #888;
+  font-size: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+.rephrase-error-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Scrollbar */
+#rephrase-it-popup::-webkit-scrollbar {
+  width: 6px;
+}
+
+#rephrase-it-popup::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#rephrase-it-popup::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
