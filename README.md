@@ -1,96 +1,82 @@
-# ✨ Rephrase It - Chrome Extension
+# Rephrase It
 
-A powerful Chrome extension that lets you instantly rephrase selected text with different styles using AI.
+**Select text anywhere, right-click, pick a tone. Done.**
 
-## 🚀 Features
+[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Install-4285F4?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/rephrase-it/cfpjlmhgebbmimbdkljdmoohcpnfoojk)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://chromewebstore.google.com/detail/rephrase-it/cfpjlmhgebbmimbdkljdmoohcpnfoojk)
+[![Manifest V3](https://img.shields.io/badge/manifest-v3-green)](manifest.json)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-- **Right-click Context Menu**: Select any text, right-click, and choose from 10 different rephrasing styles
-- **Multiple Styles Available**:
-  - 📝 Formal - For official documents and business communication
-  - 💼 Professional - Polished workplace communication
-  - 😊 Casual - Friendly, conversational tone
-  - 😏 Sarcastic - Witty and sarcastic rephrasing
-  - 🤗 Friendly - Warm and approachable tone
-  - 🎯 Persuasive - Compelling and convincing
-  - ✂️ Concise - Shorter and more direct
-  - 📚 Elaborate - More detailed explanations
-  - 🎈 Simple - Easy-to-understand language
-  - 💪 Confident - Assertive and confident tone
+Rewrite any selected text in ten tones using Google Gemini — without leaving the page you're on. Works in text inputs, content-editable fields, and plain page text.
 
-- **Beautiful UI**: Modern, sleek popup interface with dark theme
-- **Copy or Replace**: Easily copy the rephrased text or replace the original text directly
-- **Works Everywhere**: Works on any webpage, including text inputs and content-editable fields
-
-## 📦 Installation
-
-1. **Download/Clone** this repository to your local machine
-
-2. **Open Chrome** and navigate to `chrome://extensions/`
-
-3. **Enable Developer Mode** by toggling the switch in the top-right corner
-
-4. **Click "Load unpacked"** and select the `rephrase-extension` folder
-
-5. **Pin the extension** by clicking the puzzle icon in Chrome toolbar and pinning "Rephrase It"
-
-## 🔧 Setup
-
-1. Click on the **Rephrase It** extension icon in your toolbar
-
-2. Get your **FREE Google Gemini API key** at [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
-
-3. Paste your API key and click **Save API Key**
-
-4. You're ready to go!
-
-### 🆓 Free Tier Limits (Very Generous!)
-- 15 requests per minute
-- 1 million tokens per month
-- 1,500 requests per day
-
-## 💡 How to Use
-
-1. **Select** any text on a webpage
-
-2. **Right-click** on the selected text
-
-3. Hover over **"✨ Rephrase It"** in the context menu
-
-4. **Choose a style** from the submenu
-
-5. Wait for the AI to rephrase your text
-
-6. **Copy** the result or click **Replace** to substitute the original text
-
-## 🔐 Privacy
-
-- Your API key is stored locally in Chrome's secure storage
-- No data is sent to any servers except Google's Gemini API for text processing
-- Selected text is only sent when you explicitly choose to rephrase it
-
-## 📝 Requirements
-
-- Google Chrome browser (or Chromium-based browsers)
-- Google Gemini API key (FREE! - just need a Google account)
-
-## 🐛 Troubleshooting
-
-**"Please set your Google Gemini API key" error**
-- Click the extension icon and make sure you've saved a valid API key
-
-**API key not working**
-- Verify your API key starts with `AIza`
-- Make sure you've enabled the Gemini API in Google AI Studio
-- Try generating a new API key
-
-**Text not being replaced**
-- The replace feature works best in text inputs and content-editable areas
-- Some websites may prevent text modification for security reasons
-
-## 📄 License
-
-MIT License - feel free to modify and distribute!
+**[Install from the Chrome Web Store →](https://chromewebstore.google.com/detail/rephrase-it/cfpjlmhgebbmimbdkljdmoohcpnfoojk)**
 
 ---
 
-Made with ❤️ for better communication
+## Tones
+
+| | | |
+|---|---|---|
+| **Formal** — official documents | **Professional** — workplace polish | **Casual** — conversational |
+| **Friendly** — warm and approachable | **Confident** — assertive | **Persuasive** — compelling |
+| **Concise** — shorter and direct | **Elaborate** — more detail | **Simple** — plain language |
+| **Sarcastic** — witty | | |
+
+Plus custom prompts, and a history of recent edits.
+
+## How it works
+
+1. Select text on any page
+2. Right-click → **Rephrase It** → pick a tone
+3. **Copy** the result, or **Replace** to substitute it in place
+
+## Setup
+
+You bring your own Gemini key, so there's no subscription and no middleman.
+
+1. Get a free key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
+2. Click the extension icon, paste it, save
+
+Google's free tier is generous — 15 requests/minute, 1,500/day, 1M tokens/month.
+
+---
+
+## Privacy
+
+- **No backend.** There is no server of mine between you and Google.
+- Your API key is stored in `chrome.storage`, on your device.
+- Selected text is sent to Gemini only when you explicitly pick a tone. Nothing is sent in the background.
+- No analytics, no tracking, no account.
+
+**Permissions are deliberately narrow.** The extension declares `contextMenus`, `activeTab`, `storage`, and `scripting` — and no `host_permissions` at all. An earlier build requested broad host access; it was removed, because `activeTab` grants access only to the tab you're actively using, only when you invoke the extension.
+
+See the [privacy policy](PRIVACY_POLICY.md).
+
+---
+
+## Troubleshooting
+
+**"Please set your Google Gemini API key"** — Click the extension icon and save a valid key.
+
+**Key rejected** — Verify it starts with `AIza`, that the Gemini API is enabled in Google AI Studio, and try regenerating it.
+
+**Replace doesn't work on some sites** — Replacement works in inputs and content-editable areas. Some sites block programmatic text modification; use Copy instead.
+
+## Development
+
+```bash
+git clone https://github.com/vamshimorlawar/rephrase-extension
+```
+
+Chrome → `chrome://extensions/` → **Developer mode** → **Load unpacked** → select the repo folder.
+
+```
+manifest.json      Extension config (MV3)
+background.js      Service worker - context menu, Gemini calls
+content.js/css     In-page result panel and text replacement
+popup.html/js/css  API key setup and history
+```
+
+## License
+
+MIT — see [LICENSE](LICENSE).
